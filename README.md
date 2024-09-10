@@ -1,6 +1,6 @@
 # ETL Pipeline with Apache Airflow
 
-This repository contains a data engineering project that demonstrates how to build an ETL pipeline using Apache Airflow. The project processes road traffic data from various toll plazas, consolidating data from different formats into a single, transformed CSV file.
+This repository contains a simple data engineering project that demonstrates how to build an ETL pipeline using Apache Airflow. The project processes road traffic data from various toll plazas, consolidating data from different formats into a single, transformed CSV file.
 
 ## Project Overview
 
@@ -26,9 +26,6 @@ ETL-PIPELINE-AIRFLOW/
 │
 ├── dags/
 │   └── ETL_toll_data.py           # The main DAG script
-├── tests/
-│   └── dags/
-│        └── ETL_toll_data.py      # The main DAG script
 ├── airflow_settings.yaml          # Airflow settings file 
 ├── .env                           # Environment variables 
 ├── dag-chat/
@@ -72,14 +69,7 @@ git clone https://github.com/yourusername/ETL-PIPELINE-AIRFLOW.git
 cd ETL-PIPELINE-AIRFLOW
 ```
 
-## 2. Install Dependencies
-
-You can use the requirements.txt file to install the required dependencies for your DAG:
-```bash
-pip install -r requirements.txt
-```
-
-## 3. Start Astro
+## 2. Start Astro
 
 Astro is a platform for running Airflow locally in a Docker container. To start the Airflow environment, use the following command:
 ```bash
@@ -87,22 +77,22 @@ astro dev start
 ```
 This will start the Airflow web server and scheduler on localhost:8080.
 
-## 4. Access Airflow UI
+## 3. Access Airflow UI
 
 Once Airflow is running, access the web UI by navigating to:
 ```bash
 http://localhost:8080
 ```
 
-## 5. Upload the DAG
+## 4. Upload the DAG
 
 Your DAG file (ETL_toll_data.py) is located in the dags/ directory. Astro will automatically detect this DAG and display it in the Airflow UI.
 
-## 6. Trigger the DAG
+## 5. Trigger the DAG
 
 Once the DAG is visible in the UI, you can trigger it manually or wait for it to be triggered based on the schedule interval (@daily).
 
-## 7. Monitor the DAG
+## 6. Monitor the DAG
 
 Monitor the progress of your DAG by following the task logs in the Airflow UI. Each task will display logs, including status updates and errors (if any).
 
