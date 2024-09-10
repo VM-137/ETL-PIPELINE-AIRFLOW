@@ -5,7 +5,7 @@ import requests
 import tarfile
 from io import StringIO
 from unittest.mock import patch, mock_open
-from airflow.dags.ETL_toll_data import (
+from dags.ETL_toll_data import (
     download_dataset,
     untar_dataset,
     extract_data_from_csv,
@@ -16,7 +16,7 @@ from airflow.dags.ETL_toll_data import (
     staging_dir
 )
 
-@patch('airflow.dags.ETL_toll_data.requests.get')
+@patch('dags.ETL_toll_data.requests.get')
 @patch('builtins.open', new_callable=mock_open)
 def test_download_dataset(mock_open, mock_requests_get):
     mock_response = requests.Response()
@@ -27,7 +27,7 @@ def test_download_dataset(mock_open, mock_requests_get):
     mock_requests_get.assert_called_once_with("https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Final%20Assignment/tolldata.tgz")
     mock_open.assert_called_once_with(os.path.join(staging_dir, "tolldata.tgz"), "wb")
 
-@patch('airflow.dags.ETL_toll_data.tarfile.open')
+@patch('dags.ETL_toll_data.tarfile.open')
 def test_untar_dataset(mock_tarfile_open):
     mock_tarfile = mock_tarfile_open.return_value
     mock_tarfile.is_tarfile.return_value = True
